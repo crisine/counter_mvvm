@@ -34,14 +34,17 @@ classDiagram
         +initState() void
         +dispose() void
         +build(BuildContext) Widget
+        -changeModeButton() Container
+        -addCountButton() Container
     }
     
     class CounterViewModel {
         -CounterModel _counterModel
         +int count
         +CountMode countMode
+        +IconData icon
         +CounterViewModel()
-        +changeCountMode(CountMode) void
+        +changeCountMode() void
         +addCount() void
     }
     
@@ -58,6 +61,11 @@ classDiagram
         minus
     }
 
+    class CountModeIcon {
+        <<extension>>
+        +IconData Icon
+    }
+
     MyApp ..> CounterScreen : creates
     CounterScreen --> CounterViewModel : owns and injects
     CounterScreen ..> CounterWidget : creates
@@ -66,4 +74,5 @@ classDiagram
     CounterViewModel --> CounterModel : owns
     CounterViewModel ..|> ChangeNotifier : implements
     CounterModel --> CountMode : uses
+    CountMode ..> CountModeIcon : extends
 ```
