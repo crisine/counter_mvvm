@@ -10,7 +10,7 @@ MVVM 패턴에 익숙해지기 위해 만든 것으로, 외부 패키지를 사�
 - StatefulWidget 의 Property 는 Protected
 - StatefulWidget 이 새로 그려지더라도 WidgetState 는 보존되는 개념
 
-![Screenshot_1730993490](https://github.com/user-attachments/assets/5b1a6531-7625-4b54-823d-4878b321d5f4)
+![Screenshot_1730995166](https://github.com/user-attachments/assets/3fbd3104-269e-47e2-843d-73a1a739602a)
 
 ## 다이어그램
 
