@@ -4,19 +4,18 @@ import 'package:flutter/material.dart';
 
 // 카운터 표시 위젯
 class CounterWidget extends StatefulWidget {
-  const CounterWidget({super.key});
+  final CounterViewModel counterViewModel;
+  const CounterWidget({super.key, required this.counterViewModel});
 
   @override
   State<CounterWidget> createState() => _CounterWidgetState();
 }
 
 class _CounterWidgetState extends State<CounterWidget> {
-  final CounterViewModel _counterViewModel = CounterViewModel();
-
   @override
   void initState() {
     // viewModel 의 notifyListeners 호출하는 리스너
-    _counterViewModel.addListener(
+    widget.counterViewModel.addListener(
       () {
         setState(() {});
       },
@@ -26,7 +25,7 @@ class _CounterWidgetState extends State<CounterWidget> {
 
   @override
   void dispose() {
-    _counterViewModel.dispose(); // 잊지 말고 dispose.
+    widget.counterViewModel.dispose(); // 잊지 말고 dispose.
     super.dispose();
   }
 
@@ -39,7 +38,7 @@ class _CounterWidgetState extends State<CounterWidget> {
             Expanded(
               child: Center(
                 child: Text(
-                  '${_counterViewModel.count} 회 눌림',
+                  '${widget.counterViewModel.count} 회 눌림',
                   style: AppTextStyles.headlineLarge,
                 ),
               ),
@@ -50,7 +49,7 @@ class _CounterWidgetState extends State<CounterWidget> {
           alignment: Alignment.bottomRight,
           padding: const EdgeInsets.only(bottom: 32, right: 32),
           child: FloatingActionButton(
-            onPressed: () => _counterViewModel.addCount(),
+            onPressed: () => widget.counterViewModel.addCount(),
             child: const Icon(Icons.add),
           ),
         ),
